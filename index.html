@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoZoon - Informações</title>
+    <link rel="stylesheet" href="ininfo.css" />
+    <script defer src="memo.js"></script>
+</head>
+
+<body>
+    <header>
+        <figure id="seta"><a href="#"><img src="seta.png"></a></figure>
+        <p>Jogos</p>
+    </header>
+    <section class="corpo">
+        <h1>MemoZoon</h1>
+        <h2>Memória</h2>
+        <p class="combine">Combine a <span>maior quantidade de cartas</span> que conseguir lembrar!</p>
+        <p class="voce">Selecione um dos <span>3 modos de dificuldade.</span> Ao inicar o jogo,
+            um temporizador contará <span>5 segundos:</span> o tempo para
+            momorizar as cartas. Elas irão virar e você deverá clicar nos
+            pares correspondentes. Sua pontuação dependerá <span>do tempo e das tentativas</span> para finalizar o jogo.</p>
+        <br>
+        <figure><img src="cartasinicio.png"></figure>
+        <figure id="te"><img src="tornadoe.png"></figure>
+        <div class="dojogo">
+            <form id="modo-form" action="memozoon.html" method="GET">
+                <select id="modo" name="modo" required>
+                    <option value="" disabled selected>Modo</option>
+                    <option value="Fácil">Fácil</option>
+                    <option value="Médio">Médio</option>
+                    <option value="Difícil">Difícil</option>
+                </select>
+                <br>
+                <button type="submit">Iniciar Jogo <figure id="seton"><img src="duaseta.png"></figure></button>
+            </form>
+            <p class="melhor">Melhor pontuação: <span id="melhorPontuacao">N/A</span></p>
+            <p class="melhor">M.P. Fácil: <span id="melhorPontuacaoFacil">N/A</span></p>
+            <p class="melhor">M.P. Médio: <span id="melhorPontuacaoMedio">N/A</span></p>
+            <p class="melhor">M.P. Difícil: <span id="melhorPontuacaoDificil">N/A</span></p>
+        </div>
+        <figure id="td"><img src="tornadod.png"></figure>
+    </section>
+</body>
+</html>
