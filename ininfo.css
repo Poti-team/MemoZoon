@@ -21,6 +21,7 @@ body {
   background-color: white;
   padding: 0 29px 0 29px;
   border-radius: 16px 16px 0 0;
+  max-height: 100%;
 }
 
 header {
@@ -149,7 +150,7 @@ option {color: #000;}
   text-align: center;
   color: black;
   font-size: 12px;
-  padding-top: 13px;
+  /* padding-top: 13px; */
 }
 
 button {
@@ -173,4 +174,10 @@ button:hover{cursor: pointer;}
   padding: 0;
   height: 15px;
   width: 26.25px;
+}
+.melhor{
+  padding-top: 13px;
+}
+.melhor ~ .melhor{
+  padding-top: 5px;
 }
