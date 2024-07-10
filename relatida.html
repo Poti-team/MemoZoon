@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="partorio.css" />
+  <script defer src="memo.js"></script>
+  <title>MemoZoon</title>
+</head>
+
+<body>
+  <header>
+    <figure id="seta"><a href="index.html"><img src="seta.png"></a></figure>
+    <h1>MemoZoon</h1>
+  </header>
+  <main>
+    <h2>Resumo da partida</h2>
+    <div class="resumo">
+      <div class="coluna">
+        <p>Pontuação</p>
+        <p>Tempo total</p>
+        <p>Modo</p>
+        <p>Tentativas</p>
+      </div>
+      <div class="coluna">
+        <p id="pontos">--</p>
+        <p id="tempodtm">-- segundos</p>
+        <p id="modofinal">--</p>
+        <p id="tentativas">--</p>
+      </div>
+    </div>
+    <form id="modo-form" action="memozoon.html">
+      <button type="submit">Reiniciar <figure id="seton"><img src="duaseta.png"></figure></button>
+    </form>
+  </main>
+</body>
+
+</html>
