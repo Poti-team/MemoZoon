@@ -231,7 +231,7 @@ const selecionarCartas = (numeroDeCartas) => {
 };
 
 const memosom = new Audio('somemo.mp3');
-memosom.volume = 0.1;
+memosom.volume = 0.2;
 
 const loadJogo = () => {
     memosom.play();
