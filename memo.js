@@ -125,11 +125,9 @@ function tocarSomResumo() {
 }
 
 function reiniciarPartida() {
-    const params = getParams();
-    const modo = params.modo;
+    const modo = localStorage.getItem('modo');
     localStorage.removeItem('pontos');
     localStorage.removeItem('tempo');
-    localStorage.removeItem('modo');
     localStorage.removeItem('tentativas');
     window.location.href = `memozoon.html?modo=${modo}`;
 }
