@@ -48,6 +48,21 @@ header {
   box-shadow: none;
   /* height: 20px; */
 }
+#setaInicio img {
+  width: 18px;
+  height: 20px;
+  position: absolute;
+  left: 20px;
+  top: 25px;
+}
+
+#setaInicio a {
+  padding: 10px 17px 0 10px;
+  text-decoration: none;
+  border-radius: 0;
+  box-shadow: none;
+  /* height: 20px; */
+}
 
 header p {
   color: white;
