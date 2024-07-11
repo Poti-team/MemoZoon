@@ -13,7 +13,6 @@ let pontosPartidas = [];
 let tentativas = 0;
 let erros = 0;
 
-// Variável para controlar o tempo decorrido
 let tempoDecorrido = 0;
 
 function exibirMaiorPontuacao() {
@@ -168,11 +167,9 @@ const audio = new Audio('virarsom.mp3');
 audio.playbackRate = 2.0;
 
 const revelarCarta = ({ target }) => {
-    if (tempoDecorrido < 5) {
-        return;
+    if (tempoDecorrido >= 5) {
+        audio.play();
     }
-
-    audio.play();
 
     if (target.parentNode.className.includes('revelar-carta')) {
         return;
