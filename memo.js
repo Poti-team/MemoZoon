@@ -14,8 +14,9 @@ let tentativas = 0;
 let erros = 0;
 
 let tempoDecorrido = 0;
-const setinha = document.getElementById('setaInicio')
-setinha.addEventListener("click", () => console.log("Voltar"))
+// const setinha = document.getElementById('setaInicio')
+// setinha.addEventListener("click", () => console.log("Voltar"))
+    
 
 function exibirMaiorPontuacao() {
     const pontuacoes = JSON.parse(localStorage.getItem('pontuacoes')) || [];
@@ -38,6 +39,14 @@ function exibirMaiorPontuacao() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    const setinha = document.getElementById('setaInicio');
+
+    if (setinha) {
+        setinha.addEventListener("click", () => {
+            console.log("Voltar");
+        });
+    }
+
     if (window.location.pathname.endsWith('index.html')) {
         exibirMaiorPontuacao();
     }
