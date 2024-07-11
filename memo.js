@@ -12,9 +12,9 @@ const fotos = [
 let pontosPartidas = [];
 let tentativas = 0;
 let erros = 0;
-let somVirarCarta = new Audio('virarsom.mp3');
 
-somVirarCarta.preload = 'auto';
+// Variável para controlar o tempo decorrido
+let tempoDecorrido = 0;
 
 function exibirMaiorPontuacao() {
     const pontuacoes = JSON.parse(localStorage.getItem('pontuacoes')) || [];
@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (window.location.pathname.endsWith('relatida.html')) {
         exibirResumoPartida();
+        tocarSomResumo();
+        document.getElementById('reiniciarBtn').addEventListener('click', reiniciarPartida);
     }
 });
 
@@ -75,13 +77,13 @@ const checkFimdeJogo = (totalCartas) => {
             let pontos = 0;
             switch (modo) {
                 case 'Fácil':
-                    pontos = 480 / tempoFinal + 10 * Math.pow(0.8, erros);
+                    pontos = 240 / tempoFinal + 10 * Math.pow(0.8, erros);
                     break;
                 case 'Médio':
-                    pontos = 1440 / tempoFinal + 20 * Math.pow(0.8, erros);
+                    pontos = 720 / tempoFinal + 20 * Math.pow(0.8, erros);
                     break;
                 case 'Difícil':
-                    pontos = 1280 / tempoFinal + 80 * Math.pow(0.8, erros);
+                    pontos = 640 / tempoFinal + 80 * Math.pow(0.8, erros);
                     break;
                 default:
                     pontos = 0;
@@ -97,9 +99,8 @@ const checkFimdeJogo = (totalCartas) => {
             localStorage.setItem('modo', modo);
             localStorage.setItem('tentativas', tentativas);
 
-            setTimeout(() => {
-                window.location.href = 'relatida.html';
-            }, somVirarCarta.duration * 1000);
+            console.log(`Pontuação: ${pontos}`);
+            window.location.href = 'relatida.html';
         }
     }, 800);
 }
@@ -118,6 +119,22 @@ function exibirResumoPartida() {
     console.log('Pontuação: ', pontos);
 }
 
+function tocarSomResumo() {
+    const resumaudio = new Audio('resumossom.mp3');
+    resumaudio.volume = 0.5;
+    resumaudio.play();
+}
+
+function reiniciarPartida() {
+    const params = getParams();
+    const modo = params.modo;
+    localStorage.removeItem('pontos');
+    localStorage.removeItem('tempo');
+    localStorage.removeItem('modo');
+    localStorage.removeItem('tentativas');
+    window.location.href = `memozoon.html?modo=${modo}`;
+}
+
 let primeiraCarta = '';
 let segundaCarta = '';
 
@@ -133,6 +150,7 @@ const checarCartas = () => {
         tentativas++;
         const totalCartas = document.querySelectorAll('.carta').length;
         checkFimdeJogo(totalCartas);
+
     } else {
         setTimeout(() => {
             primeiraCarta.classList.remove('revelar-carta');
@@ -142,13 +160,24 @@ const checarCartas = () => {
             erros++;
             tentativas++;
         }, 500);
+
     }
 }
 
+const audio = new Audio('virarsom.mp3');
+audio.playbackRate = 2.0;
+
 const revelarCarta = ({ target }) => {
+    if (tempoDecorrido < 5) {
+        return;
+    }
+
+    audio.play();
+
     if (target.parentNode.className.includes('revelar-carta')) {
         return;
     }
+
     if (primeiraCarta === '') {
         target.parentNode.classList.add('revelar-carta');
         primeiraCarta = target.parentNode;
@@ -157,8 +186,6 @@ const revelarCarta = ({ target }) => {
         segundaCarta = target.parentNode;
         checarCartas();
     }
-    somVirarCarta.currentTime = 0;
-    somVirarCarta.play();
 }
 
 const criarElemento = (tag, className) => {
@@ -203,7 +230,11 @@ const selecionarCartas = (numeroDeCartas) => {
     return cartasSelecionadas;
 };
 
+const memosom = new Audio('somemo.mp3');
+memosom.volume = 0.1;
+
 const loadJogo = () => {
+    memosom.play();
     const params = getParams();
     const modoSelecionado = params.modo;
     let numeroDeCartas = 0;
@@ -244,6 +275,7 @@ let tempoContado = 0;
 const temporizador = () => {
     this.loop = setInterval(() => {
         tempoContado++;
+        tempoDecorrido++;
         tempo.innerHTML = tempoContado;
     }, 1000);
 }
