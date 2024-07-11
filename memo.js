@@ -14,6 +14,8 @@ let tentativas = 0;
 let erros = 0;
 
 let tempoDecorrido = 0;
+const setinha = document.getElementById('setaInicio')
+setinha.addEventListener("click", () => console.log("Voltar"))
 
 function exibirMaiorPontuacao() {
     const pontuacoes = JSON.parse(localStorage.getItem('pontuacoes')) || [];
