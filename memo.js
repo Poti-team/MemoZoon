@@ -17,9 +17,6 @@ let tempoDecorrido = 0;
 // const setinha = document.getElementById('setaInicio')
 // setinha.addEventListener("click", () => console.log("Voltar"))
 
-const voltarGames = function(){
-    console.log("Voltar");
-}
 function exibirMaiorPontuacao() {
     const pontuacoes = JSON.parse(localStorage.getItem('pontuacoes')) || [];
     if (pontuacoes.length === 0) {
